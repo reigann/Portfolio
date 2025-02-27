@@ -1,0 +1,184 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: black;
+    color: white;
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scrolling during animation */
+    position: relative;
+    height: auto; /* Allow scrolling */
+  }
+  
+  /* Canvas for Interactive Background */
+  #interactive-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place behind other content */
+  }
+  
+  /* Navbar Styles */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    opacity: 0; /* Start invisible */
+    transform: translateY(-100%); /* Start above the screen */
+    animation: fadeInNavbar 4s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+  }
+  
+  .navbar-left {
+    font-size: 14px;
+    font-weight: 300;
+    color: #ccc;
+    opacity: 0; /* Start invisible */
+    transform: translateX(-100%); /* Start from left */
+    animation: slideInLeft 1s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+  }
+  
+  .navbar-right {
+    opacity: 0; /* Start invisible */
+    transform: translateX(100%); /* Start from right */
+    animation: slideInRight 1s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+  }
+  
+  .navbar-right a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    margin-left: 10px;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-right a::after {
+    content: ''; /* Create an empty pseudo-element */
+    position: absolute;
+    left: 0;
+    bottom: -2px; /* Position below the text */
+    width: 0; /* Start with no width */
+    height: 2px; /* Thickness of the underline */
+    background-color: rgb(38, 0, 255);
+    transition: width 0.3s ease; /* Smooth transition for width */
+  }
+  
+  .navbar-right a:hover::after {
+    width: 100%;
+  }
+  
+  /* Experience Section Styles */
+  .experience {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 150px 20px 50px; /* Add more padding for navbar */
+    min-height: 100vh;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .experience h1 {
+    font-size: 3rem;
+    margin-bottom: 50px;
+    opacity: 0; /* Start invisible */
+    transform: translateY(-50px);
+    animation: fadeInTitle 1.5s ease-in-out forwards;
+  }
+  
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  .timeline-item {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    opacity: 0; /* Start invisible */
+    transform: translateY(50px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  
+  .timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .timeline-image img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+  }
+  
+  .timeline-item:hover .timeline-image img {
+    transform: scale(1.05); /* Zoom effect on hover */
+  }
+  
+  .timeline-content {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .timeline-content h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: rgb(38, 0, 255);
+  }
+  
+  .timeline-content p {
+    font-size: 1rem;
+    color: #ccc;
+  }
+  
+  /* Animations */
+  @keyframes fadeInNavbar {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInLeft {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideInRight {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeInTitle {
+    0% {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

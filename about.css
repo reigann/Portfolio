@@ -1,0 +1,146 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: black;
+    color: white;
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scrolling during animation */
+    overflow: hidden;
+    position: relative; /* Enable positioning for child elements */
+  }
+  
+  /* Overlay for Page Transition */
+  #page-transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 9999;
+    transform: scaleX(0); /* Start as invisible */
+    transform-origin: left;
+    transition: transform 0.8s ease-in-out;
+    overflow: hidden;
+  }
+  
+  #page-transition-overlay.active {
+    transform: scaleX(1); /* Expand to cover the screen */
+  }
+  
+  #page-transition-overlay.exit {
+    transform: scaleX(0); /* Shrink back to invisible */
+    transform-origin: right;
+  }
+  
+  /* Canvas for Interactive Background */
+  #interactive-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place behind other content */
+    overflow: hidden;
+  }
+  
+  /* Navbar Styles */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  .navbar-left {
+    font-size: 14px;
+    font-weight: 300;
+    color: #ccc;
+  }
+  
+  .navbar-right a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    margin-left: 20px;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-right a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: rgb(38, 0, 255);
+    transition: width 0.3s ease;
+  }
+  
+  .navbar-right a:hover::after {
+    width: 100%;
+  }
+  
+  /* About Section Styles */
+  .about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Center horizontally and vertically */
+    height: 100vh;
+    text-align: left;
+    overflow: hidden;
+    padding: 10px;
+    position: relative; /* Enable positioning for child elements */
+    z-index: 1; /* Ensure it appears above the background */
+    opacity: 0; /* Start invisible */
+    transform: translateY(50px); /* Start from below */
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  
+  .about.visible {
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Move to normal position */
+  }
+  
+  #about-text {
+    font-size: 2rem;
+    font-weight: 400;
+    max-width: 1000px;
+    position: relative;
+  }
+  
+  /* Animations */
+  @keyframes fadeInNavbar {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInLeft {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideInRight {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }

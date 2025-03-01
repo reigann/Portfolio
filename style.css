@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Cinzel', serif; /* Default font changed to Cinzel for elegance */
+  font-family: 'Cinzel', serif;
   background-color: #000;
   color: #fff;
   line-height: 1.6;
@@ -36,7 +36,7 @@ body {
   align-items: center;
   padding: 10px 20px;
   background-color: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px); /* Glassmorphism effect */
+  backdrop-filter: blur(10px);
   position: fixed;
   top: 0;
   width: 100%;
@@ -53,7 +53,6 @@ body {
   opacity: 0;
   transform: translateX(-100%);
   animation: slideInLeft 1s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
-  font-family: 'Cinzel', serif; /* Consistent font for elegance */
 }
 
 .navbar-right {
@@ -70,7 +69,6 @@ body {
   margin-left: 10px;
   position: relative;
   transition: color 0.3s ease, transform 0.3s ease;
-  font-family: 'Cinzel', serif; /* Consistent font for elegance */
 }
 
 .navbar-right a::after {
@@ -80,13 +78,13 @@ body {
   bottom: -2px;
   width: 0;
   height: 2px;
-  background: #fff; /* Changed to white for elegance */
+  background: #fff;
   transition: width 0.3s ease;
 }
 
 .navbar-right a:hover {
   color: #fff;
-  transform: scale(1.1); /* Slight scale on hover for interactivity */
+  transform: scale(1.1);
 }
 
 .navbar-right a:hover::after {
@@ -109,7 +107,7 @@ body {
 
 .home .name {
   font-size: 15rem;
-  font-weight: 700; /* Cinzel Bold for elegance */
+  font-weight: 700;
   letter-spacing: -20px;
   position: relative;
   text-transform: uppercase;
@@ -118,16 +116,16 @@ body {
 .home .name span {
   display: inline-block;
   opacity: 0;
-  transform: translateY(100%) rotateY(360deg) scale(0); /* 3D rotation for futuristic effect */
-  animation: elegantAppear 2s cubic-bezier(0.87, -0.41, 0.19, 1.44) forwards; /* More dynamic easing */
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6); /* White glow for elegance */
-  color: #fff; /* Changed to pure white */
+  transform: translateY(100%) rotateY(360deg) scale(0);
+  animation: elegantAppear 2s cubic-bezier(0.87, -0.41, 0.19, 1.44) forwards;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6);
+  color: #fff;
   transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
 
 .home .name span:hover {
-  transform: scale(1.2) rotateY(10deg); /* 3D hover effect */
-  text-shadow: 0 0 30px rgba(255, 255, 255, 1), 0 0 50px rgba(255, 255, 255, 0.8); /* Enhanced white glow on hover */
+  transform: scale(1.2) rotateY(10deg);
+  text-shadow: 0 0 30px rgba(255, 255, 255, 1), 0 0 50px rgba(255, 255, 255, 0.8);
 }
 
 /* Add delays for each letter */
@@ -157,7 +155,7 @@ body {
   }
 }
 
-/* Existing Animations (Unchanged, but Enhanced) */
+/* Existing Animations (Unchanged) */
 @keyframes fadeInNavbar {
   to {
     opacity: 1;
@@ -185,5 +183,55 @@ body {
   }
   100% {
     opacity: 1;
+  }
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+  .navbar {
+    padding: 5px 10px;
+  }
+
+  .navbar-left {
+    font-size: 12px;
+  }
+
+  .navbar-right a {
+    font-size: 14px;
+    margin-left: 8px;
+  }
+
+  .home {
+    padding: 20px;
+  }
+
+  .home .name {
+    font-size: 8rem; /* Reduced for mobile */
+    letter-spacing: -10px; /* Adjusted spacing */
+  }
+
+  .navbar-right {
+    display: flex;
+    flex-direction: column; /* Stack links vertically on mobile */
+    align-items: flex-end;
+  }
+
+  .navbar-right a {
+    margin: 5px 0; /* Spacing between stacked links */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .navbar-left {
+    font-size: 10px;
+  }
+
+  .navbar-right a {
+    font-size: 12px;
+  }
+
+  .home .name {
+    font-size: 6rem; /* Further reduced for very small screens */
+    letter-spacing: -5px; /* Adjusted spacing */
   }
 }

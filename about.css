@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Cinzel', serif; /* Changed to Cinzel for elegance */
+  font-family: 'Cinzel', serif;
   background-color: #000;
   color: #fff;
   line-height: 1.6;
@@ -60,7 +60,7 @@ body {
   align-items: center;
   padding: 10px 20px;
   background-color: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(10px); /* Glassmorphism effect */
+  backdrop-filter: blur(10px);
   position: fixed;
   top: 0;
   width: 100%;
@@ -102,7 +102,7 @@ body {
   bottom: -2px;
   width: 0;
   height: 2px;
-  background: #fff; /* Changed to white for elegance */
+  background: #fff;
   transition: width 0.3s ease;
 }
 
@@ -140,8 +140,8 @@ body {
   font-size: 3.5rem;
   font-weight: 700;
   margin-bottom: 20px;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6); /* Elegant white glow */
-  color: #fff; /* Pure white for elegance */
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6);
+  color: #fff;
 }
 
 #about-text {
@@ -149,11 +149,11 @@ body {
   font-weight: 400;
   max-width: 800px;
   line-height: 1.8;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.4); /* Subtle white glow */
-  color: #fff; /* Pure white for elegance */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.4);
+  color: #fff;
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInText 1.5s cubic-bezier(0.645, 0.045, 0.355, 1) forwards 0.5s; /* Delay for staggered effect */
+  animation: fadeInText 1.5s cubic-bezier(0.645, 0.045, 0.355, 1) forwards 0.5s;
 }
 
 /* Animations */
@@ -182,5 +182,65 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Media Queries for Responsiveness */
+@media screen and (max-width: 768px) {
+  .navbar {
+    padding: 5px 10px;
+  }
+
+  .navbar-left {
+    font-size: 12px;
+  }
+
+  .navbar-right a {
+    font-size: 14px;
+    margin-left: 8px;
+  }
+
+  .about {
+    padding: 10px;
+  }
+
+  .about-title {
+    font-size: 2.5rem; /* Reduced for mobile */
+    margin-bottom: 15px;
+  }
+
+  #about-text {
+    font-size: 1.2rem; /* Reduced for mobile */
+    max-width: 90%; /* Adjust width for smaller screens */
+    padding: 0 10px;
+  }
+
+  .navbar-right {
+    display: flex;
+    flex-direction: column; /* Stack links vertically on mobile */
+    align-items: flex-end;
+  }
+
+  .navbar-right a {
+    margin: 5px 0; /* Spacing between stacked links */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .navbar-left {
+    font-size: 10px;
+  }
+
+  .navbar-right a {
+    font-size: 12px;
+  }
+
+  .about-title {
+    font-size: 2rem; /* Further reduced for very small screens */
+  }
+
+  #about-text {
+    font-size: 1rem; /* Further reduced for very small screens */
+    max-width: 85%; /* Adjust width for very small screens */
   }
 }

@@ -1,146 +1,186 @@
 /* General Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Cinzel', serif; /* Changed to Cinzel for elegance */
+  background-color: #000;
+  color: #fff;
+  line-height: 1.6;
+  overflow-x: hidden;
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Overlay for Page Transition */
+#page-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  z-index: 9999;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s ease-in-out;
+  overflow: hidden;
+}
+
+#page-transition-overlay.active {
+  transform: scaleX(1);
+}
+
+#page-transition-overlay.exit {
+  transform: scaleX(0);
+  transform-origin: right;
+}
+
+/* Canvas for Interactive Background */
+#interactive-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px); /* Glassmorphism effect */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-100%);
+  animation: fadeInNavbar 4s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+}
+
+.navbar-left {
+  font-size: 14px;
+  font-weight: 300;
+  color: #ccc;
+  opacity: 0;
+  transform: translateX(-100%);
+  animation: slideInLeft 1s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+}
+
+.navbar-right {
+  opacity: 0;
+  transform: translateX(100%);
+  animation: slideInRight 1s cubic-bezier(0.645, 0.045, 0.355, 1) forwards;
+}
+
+.navbar-right a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  margin-left: 20px;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-right a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background: #fff; /* Changed to white for elegance */
+  transition: width 0.3s ease;
+}
+
+.navbar-right a:hover {
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.navbar-right a:hover::after {
+  width: 100%;
+}
+
+/* About Section Styles */
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.about.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6); /* Elegant white glow */
+  color: #fff; /* Pure white for elegance */
+}
+
+#about-text {
+  font-size: 1.5rem;
+  font-weight: 400;
+  max-width: 800px;
+  line-height: 1.8;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.4); /* Subtle white glow */
+  color: #fff; /* Pure white for elegance */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInText 1.5s cubic-bezier(0.645, 0.045, 0.355, 1) forwards 0.5s; /* Delay for staggered effect */
+}
+
+/* Animations */
+@keyframes fadeInNavbar {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  body {
-    font-family: 'Poppins', sans-serif;
-    background-color: black;
-    color: white;
-    line-height: 1.6;
-    overflow-x: hidden; /* Prevent horizontal scrolling during animation */
-    overflow: hidden;
-    position: relative; /* Enable positioning for child elements */
+}
+
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
-  
-  /* Overlay for Page Transition */
-  #page-transition-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    z-index: 9999;
-    transform: scaleX(0); /* Start as invisible */
-    transform-origin: left;
-    transition: transform 0.8s ease-in-out;
-    overflow: hidden;
+}
+
+@keyframes slideInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
-  
-  #page-transition-overlay.active {
-    transform: scaleX(1); /* Expand to cover the screen */
+}
+
+@keyframes fadeInText {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  #page-transition-overlay.exit {
-    transform: scaleX(0); /* Shrink back to invisible */
-    transform-origin: right;
-  }
-  
-  /* Canvas for Interactive Background */
-  #interactive-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Place behind other content */
-    overflow: hidden;
-  }
-  
-  /* Navbar Styles */
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: transparent;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-  }
-  
-  .navbar-left {
-    font-size: 14px;
-    font-weight: 300;
-    color: #ccc;
-  }
-  
-  .navbar-right a {
-    text-decoration: none;
-    color: white;
-    font-size: 16px;
-    font-weight: 400;
-    margin-left: 20px;
-    position: relative;
-    transition: color 0.3s ease;
-  }
-  
-  .navbar-right a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 0;
-    height: 2px;
-    background-color: rgb(38, 0, 255);
-    transition: width 0.3s ease;
-  }
-  
-  .navbar-right a:hover::after {
-    width: 100%;
-  }
-  
-  /* About Section Styles */
-  .about {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; /* Center horizontally and vertically */
-    height: 100vh;
-    text-align: left;
-    overflow: hidden;
-    padding: 10px;
-    position: relative; /* Enable positioning for child elements */
-    z-index: 1; /* Ensure it appears above the background */
-    opacity: 0; /* Start invisible */
-    transform: translateY(50px); /* Start from below */
-    transition: opacity 1s ease, transform 1s ease;
-  }
-  
-  .about.visible {
-    opacity: 1; /* Fade in */
-    transform: translateY(0); /* Move to normal position */
-  }
-  
-  #about-text {
-    font-size: 2rem;
-    font-weight: 400;
-    max-width: 1000px;
-    position: relative;
-  }
-  
-  /* Animations */
-  @keyframes fadeInNavbar {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes slideInLeft {
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  
-  @keyframes slideInRight {
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
+}
